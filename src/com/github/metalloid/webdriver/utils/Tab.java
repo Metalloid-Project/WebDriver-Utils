@@ -70,7 +70,7 @@ public class Tab extends Utility {
 		switchToTab(tabNumberCountedSinceOne);
 	}
 
-	public void waitForNewTabAndSwitchToIt(int expectedNumberOfWindow) {
+	public void waitForNewTabAndSwitchToIt() {
 		waitForNumberOfWindowToBe(getCurrentNumberOfTabs()+1);
 		switchToTab(getCurrentNumberOfTabs());
 	}
@@ -89,7 +89,7 @@ public class Tab extends Utility {
 	private String getHandleForNewTab() {
 		Set<String> all = driver.getWindowHandles();
 		for (String handle : all) {
-			if (!tabs.values().contains(handle))
+			if (!tabs.containsValue(handle))
 				return handle;
 		}
 		throw new RuntimeException("Tab calculation error");

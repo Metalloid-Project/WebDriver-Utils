@@ -76,6 +76,10 @@ public class JavaScript extends Utility {
 		return !(boolean) executeScript("return arguments[0].disabled", element);
 	}
 
+	public void setEnabled(WebElement element) {
+		executeScript("arguments[0].enabled = true");
+	}
+
 	public void scrollDown(WebElement element) {
 		executeScript("arguments[0].scrollTo(0,5000);", element);
 	}
