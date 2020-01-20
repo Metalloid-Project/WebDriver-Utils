@@ -72,6 +72,10 @@ public class JavaScript extends Utility {
 		return (String) executeScript("return arguments[0].getAttribute(\"arguments[1]\");", element, attribute);
 	}
 
+	public void setAttribute(WebElement element, String attribute, String value) {
+		executeScript("arguments[0].setAttribute('arguments[1]', arguments[2])", element, attribute, value);
+	}
+
 	public boolean isEnabled(WebElement element) {
 		return !(boolean) executeScript("return arguments[0].disabled", element);
 	}
