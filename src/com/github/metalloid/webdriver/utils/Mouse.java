@@ -1,5 +1,6 @@
 package com.github.metalloid.webdriver.utils;
 
+import com.github.metalloid.pagefactory.controls.Control;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +17,16 @@ public class Mouse extends Utility {
 		actions = new Actions(driver);
 	}
 
+	public Mouse moveToControl(Control control, int offsetX, int offsetY) {
+		return moveToWebElement(control.element(), offsetX, offsetY);
+	}
+
 	public Mouse moveToWebElement(WebElement element, int offsetX, int offsetY) {
 		return addAction(a -> actions.moveToElement(element).moveByOffset(offsetX, offsetY));
+	}
+
+	public Mouse moveToControl(Control control) {
+		return moveToWebElement(control.element());
 	}
 
 	public Mouse moveToWebElement(WebElement element) {
