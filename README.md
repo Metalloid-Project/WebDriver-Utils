@@ -1,6 +1,6 @@
 # WebDriver-Utils
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.metalloid-project/webdriver-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.metalloid-project/webdriver-utils)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.metalloid-project/metalloid-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.metalloid-project/webdriver-utils)
 
 Maven dependency:
 ```
@@ -8,18 +8,18 @@ Maven dependency:
 <dependency>
     <groupId>com.github.metalloid-project</groupId>
     <artifactId>webdriver-utils</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
 Compiled with `Java 1.8`
 
-Already contains dependency:
+Depends on:
 ```
 <dependency>
 	<groupId>com.github.metalloid-project</groupId>
-	<artifactId>page-factory</artifactId>
-	<version>1.0.2</version>
+	<artifactId>metalloid-page-factory</artifactId>
+	<version>2.2.0</version>
 </dependency>
 ```
 
