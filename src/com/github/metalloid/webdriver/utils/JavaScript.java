@@ -154,4 +154,50 @@ public class JavaScript extends Utility {
 			throw new IllegalArgumentException("Cannot execute script because of null element!");
 		}
 	}
+
+	public void dragAndDrop(WebElement source, WebElement destination) {
+		disallowNullElement(source);
+		disallowNullElement(destination);
+		executeScript("var src = arguments[0]" +
+				"var tgt = arguments[1]" +
+				"\n" +
+				"var dataTransfer = {\n" +
+				"    dropEffect: '',\n" +
+				"    effectAllowed: 'all',\n" +
+				"    files: [],\n" +
+				"    items: {},\n" +
+				"    types: [],\n" +
+				"    setData: function(format, data) {\n" +
+				"        this.items[format] = data;\n" +
+				"        this.types.append(format);\n" +
+				"    },\n" +
+				"    getData: function(format) {\n" +
+				"        return this.items[format];\n" +
+				"    },\n" +
+				"    clearData: function(format) {}\n" +
+				"};\n" +
+				"var emit = function(event, target) {\n" +
+				"    var evt = document.createEvent('Event');\n" +
+				"    evt.initEvent(event, true, false);\n" +
+				"    evt.dataTransfer = dataTransfer;\n" +
+				"    target.dispatchEvent(evt);\n" +
+				"};\n" +
+				"emit('dragstart', src);\n" +
+				"emit('dragenter', tgt);\n" +
+				"emit('dragover', tgt);\n" +
+				"emit('drop', tgt);\n" +
+				"emit('dragend', src);", source, destination);
+	}
+
+	public void dragAndDrop(Control source, Control destination) {
+		dragAndDrop(source.element(), destination.element());
+	}
+
+	public void dragAndDrop(WebElement source, Control destination) {
+		dragAndDrop(source, destination.element());
+	}
+
+	public void dragAndDrop(Control source, WebElement destination) {
+		dragAndDrop(source.element(), destination);
+	}
 }
